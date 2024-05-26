@@ -6,8 +6,8 @@ namespace App\ChapterTwo;
 
 final class TestResult
 {
-    public mixed $runCount;
-    public mixed $errorCount;
+    public int $runCount;
+    public int $errorCount;
 
     public function __construct()
     {
@@ -15,17 +15,17 @@ final class TestResult
         $this->errorCount = 0;
     }
 
-    public function testStarted()
+    public function testStarted(): void
     {
         ++$this->runCount;
     }
 
-    public function testFailed()
+    public function testFailed(): void
     {
         ++$this->errorCount;
     }
 
-    public function summary()
+    public function summary(): string
     {
         return sprintf('%d run, %d failed', $this->runCount, $this->errorCount);
     }

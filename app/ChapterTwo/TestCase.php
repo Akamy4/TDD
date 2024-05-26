@@ -4,36 +4,34 @@ declare(strict_types=1);
 
 namespace App\ChapterTwo;
 
-
 class TestCase
 {
-    protected $name;
+    protected string $name;
 
-    public function __construct($name)
+    public function __construct(string $name)
     {
         $this->name = $name;
     }
 
-    public function setUp()
+    public function setUp(): void
     {
     }
 
-    public function tearDown()
+    public function tearDown(): void
     {
     }
 
-    public function run()
+    public function run(TestResult $result): TestResult
     {
-        $res = new TestResult();
-        $res->testStarted();
+        $result->testStarted();
         $this->setUp();
         try {
             $method = $this->name;
             $this->$method();
         } catch (\Exception $exception) {
-            $res->testFailed();
+            $result->testFailed();
         }
         $this->tearDown();
-        return $res;
+        return $result;
     }
 }

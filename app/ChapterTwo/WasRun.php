@@ -6,7 +6,7 @@ namespace App\ChapterTwo;
 
 final class WasRun extends TestCase
 {
-    public mixed $log = '';
+    public string $log = '';
 
     public function __construct($name)
     {
@@ -14,23 +14,23 @@ final class WasRun extends TestCase
         parent::__construct($name);
     }
 
-    public function setUp()
+    public function setUp(): void
     {
         $this->log = "setUp ";
     }
 
-    public function testMethod()
-    {
-        $this->log .= "testMethod ";
-    }
-
-    public function tearDown()
+    public function tearDown(): void
     {
         $this->log .= "tearDown";
     }
 
+    public function testMethod(): void
+    {
+        $this->log .= "testMethod ";
+    }
+
     public function testBrokenMethod()
     {
-        throw new \Exception('234');
+        throw new \Exception();
     }
 }
