@@ -63,15 +63,15 @@ class ExampleTest extends TestCase
 
     public function testReduceSum()
     {
-        $sum = new Sum(Money::dollar(3), Money::dollar(4));
-        $bank = new Bank();
+        $sum    = new Sum(Money::dollar(3), Money::dollar(4));
+        $bank   = new Bank();
         $result = $bank->reduce($sum, 'USD');
         $this->assertEquals(Money::dollar(7), $result);
     }
 
     public function testReduceMoney()
     {
-        $bank = new Bank();
+        $bank   = new Bank();
         $result = $bank->reduce(Money::dollar(1), 'USD');
         $this->assertEquals(Money::dollar(1), $result);
     }
@@ -145,7 +145,7 @@ class ExampleTest extends TestCase
     protected function setUp(): void
     {
         parent::setUp();
-        $this->test = new WasRun("testMethod");
+        $this->test   = new WasRun("testMethod");
         $this->result = new TestResult();
     }
 
@@ -157,21 +157,21 @@ class ExampleTest extends TestCase
 
     public function testResult()
     {
-        $test   = new WasRun("testMethod");
+        $test = new WasRun("testMethod");
         $this->test->run($this->result);
         $this->assertEquals("1 run, 0 failed", $this->result->summary());
     }
 
     public function testFailedResult()
     {
-        $test   = new WasRun("testBrokenMethod");
+        $test = new WasRun("testBrokenMethod");
         $test->run($this->result);
         $this->assertEquals("1 run, 1 failed", $this->result->summary());
     }
 
     public function testFailedResultFormatting()
     {
-        $this->test   = new WasRun("testBrokenMethod");
+        $this->test = new WasRun("testBrokenMethod");
         $this->test->run($this->result);
 
         $this->assertEquals("setUp tearDown", $this->test->log);
