@@ -4,8 +4,6 @@ declare(strict_types=1);
 
 namespace App\ChapterOne;
 
-use PhpParser\Node\Expr\Cast\Object_;
-
 final class Pair
 {
     public function __construct(
